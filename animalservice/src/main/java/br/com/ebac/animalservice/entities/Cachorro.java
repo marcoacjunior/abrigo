@@ -38,7 +38,7 @@ public class Cachorro implements Serializable {
 	@Column(nullable = false)
 	private String condicaoChegada;
 
-	private String nomeRecebedor;
+	private String nomeRecebedor; 
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant dataObito; 
