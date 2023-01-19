@@ -8,37 +8,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ebac.animalservice.entities.Cachorro;
-import br.com.ebac.animalservice.repositories.CachorroRepository;
+import br.com.ebac.animalservice.entities.Gato;
+import br.com.ebac.animalservice.repositories.GatoRepository;
 
 @RestController
-@RequestMapping("/cachorro")
-public class CachorroController {  
+@RequestMapping("/gato")
+public class GatoController { 
 	
-	private CachorroRepository repository;
+	private GatoRepository repository;
 	
-	public CachorroController(CachorroRepository repository) {
+	public GatoController(GatoRepository repository) {
 		this.repository = repository;
 	}
 	
 	@GetMapping
-	private List<Cachorro> findAll() {
+	private List<Gato> findAll() {
 		return repository.findAll();
 	}
 	
 	@PostMapping
-	private Cachorro create(@RequestBody Cachorro cachorro) {
-		return repository.save(cachorro);
+	private Gato create(@RequestBody Gato gato) {
+		return repository.save(gato);
 		
 	}
 	
 	@GetMapping("/nao-adotados")
-	private List <Cachorro> findNotAdopted() {
+	private List <Gato> findNotAdopted() {
 		return repository.findNotAdopted(); 
 	}
 	 
 	@GetMapping("/adotados")
-	private List <Cachorro> findAdopted() { 
+	private List <Gato> findAdopted() { 
 		return repository.Adopted(); 
+	}
+	
+	@GetMapping("/recebedores")
+	private List <Gato> findVet() {
+		return repository.findVet(); 
 	}
 }
